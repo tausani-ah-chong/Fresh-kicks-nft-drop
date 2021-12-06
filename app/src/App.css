@@ -1,20 +1,13 @@
 .App {
-  height: 100vh;
-  background-color: rgb(20, 20, 20);
-  overflow: scroll;
   text-align: center;
-  overflow: hidden;
 }
 
 .container {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 30px 0 30px;
-  color: white;
-  position: relative;
-  /* background-color: #35aee2; */
+
 }
 
 .authed-container {
@@ -25,7 +18,7 @@
 }
 
 .header-container {
-  /* background-color: #60c657; */
+  padding-top: 50px;
 }
 
 .header {
@@ -75,11 +68,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  padding-top: 30px;
   width: 100%;
   bottom: 0;
   left: 0;
-  /* padding-bottom: 45px; */
 }
 
 .twitter-logo {
@@ -90,7 +82,7 @@
 .footer-text {
   font-size: 16px;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .connected-container input[type='text'] {
