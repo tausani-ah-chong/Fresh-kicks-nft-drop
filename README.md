@@ -2,6 +2,9 @@
 
 Getting some practice & gaing knowlege about how NFT's are created and uploaded onto Solana via Metaplex
 
+#### All image credit goes to Ox Street!
+#### website: https://oxstreet.com/ 
+#### instagram: https://www.instagram.com/oxstreet/
 
 ## Current progress (Video)
 
