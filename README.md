@@ -1,6 +1,6 @@
 # buildspace Solana NFT Drop Project
 
-Getting some practice & gaing knowlege about how NFT's are created and uploaded onto Solana via Metaplex
+Getting some practice & gaining high level knowlege about how NFT's are created and uploaded onto Solana via Metaplex
 
 #### All image credit goes to Ox Street!
 #### website: https://oxstreet.com/ 
