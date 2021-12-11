@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Connection, PublicKey } from '@solana/web3.js';
 import { Program, Provider, web3 } from '@project-serum/anchor';
 import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
@@ -27,9 +27,8 @@ const MAX_CREATOR_LEN = 32 + 1 + 1;
 
 const CandyMachine = ({ walletAddress }) => {
   const [machineStats, setMachineStats] = useState(null);
-  const [mints, setMints] = useState([]);
   const [isMinting, setIsMinting] = useState(false);
-  const [isLoadingMints, setIsLoadingMints] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getProvider = () => {
     const rpcHost = process.env.REACT_APP_SOLANA_RPC_HOST;
@@ -45,6 +44,8 @@ const CandyMachine = ({ walletAddress }) => {
   };
 
   const getCandyMachineState = async () => { 
+    setLoading(true)
+
     const provider = getProvider();
     
     const metadataIdl = await Program.fetchIdl(candyMachineProgram, provider);
@@ -72,34 +73,12 @@ const CandyMachine = ({ walletAddress }) => {
       goLiveDateTimeString,
     })
 
-    console.log({
-      itemsAvailable,
-      itemsRedeemed,
-      itemsRemaining,
-      goLiveData,
-      goLiveDateTimeString,
-    });
-
-    setIsLoadingMints(true);
+    setLoading(false);
 
     const data = await fetchHashTable(
       process.env.REACT_APP_CANDY_MACHINE_ID,
       true
     );
-    
-    if (data.length !== 0) {
-      for (const mint of data) {
-        const response = await fetch(mint.data.uri);
-        const parse = await response.json();
-        console.log("Past Minted NFT", mint)
-    
-        if (!mints.find((mint) => mint === parse)) {
-          setMints((prevState) => [...prevState, parse]);
-        }
-      }
-    }
-
-    setIsLoadingMints(false);
   };
 
 
@@ -339,43 +318,33 @@ const CandyMachine = ({ walletAddress }) => {
   };
 
   return (
-    machineStats && (
-      <div className="machine-container">
-        <p>{`Items Minted: ${machineStats.itemsRedeemed} / ${machineStats.itemsAvailable}`}</p>
-        <div>
-        {machineStats.itemsRedeemed !== machineStats.itemsAvailable
-          ? (
-            <button 
-              className="cta-button mint-button" 
-              onClick={mintToken}
-              disabled={isMinting}
-            >
-              Mint NFT
-            </button>
-          )
-          : (
-            <p>SOLD OUT</p>
-          )
-        }
-        {isLoadingMints && <p>LOADING MINTED KICKS...</p>}
-        {mints.length > 0 && (
-          <div className="gif-container">
-          <p className="sub-text">Minted Kicks ✨</p>
-          <div className="gif-grid">
-            {mints.map((mint) => (
-              <div className="gif-item" key={mint}>
-                <img 
-                  src={mint.image} 
-                  alt={`Minted NFT ${mint.image}`} 
-                />
-              </div>
-            ))}
+    <div className="machine-container">
+    {loading 
+      ? (
+        <p>LOADING</p>
+      )
+      : machineStats && (
+        <>
+          <p>{`Kicks Minted: ${machineStats.itemsRedeemed} / ${machineStats.itemsAvailable}`}</p>
+          <div>
+          {machineStats.itemsRedeemed !== machineStats.itemsAvailable
+            ? (
+              <button 
+                className="cta-button mint-button" 
+                onClick={mintToken}
+                disabled={isMinting}
+              >
+                Mint NFT
+              </button>
+            )
+            : (
+              <p>SOLD OUT 😢</p>
+            )
+          }
           </div>
-        </div>
-        )}
-        </div>
-      </div>
-    )
+        </>
+      )}
+    </div>
   );
 };
 
