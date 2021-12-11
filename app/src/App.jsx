@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import twitterLogo from './assets/twitter-logo.svg';
 import CandyMachine from './CandyMachine'
+import freshKicksNftGif from './assets/fresh-kicks-nft.gif'
 
 // Constants
 const TWITTER_HANDLE = 'APOLLO_45k';
@@ -50,18 +51,19 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header">👟 Fresh Kicks NFT Drop</p>
-          <div className="header">
+          <iframe className="gif" title="fresh-gif" src={freshKicksNftGif}></iframe>
+          <div className="header-content-wrapper">
+            <p className="header">FRESH KICKS NFT</p>
             {!walletAddress && (
               <button
-                className="cta-button connect-wallet-button"
+                className="cta-button connect-wallet-button-color"
                 onClick={handleConnectWallet}
               >
                 Connect to Wallet
               </button>
             )}
+            {walletAddress && <CandyMachine walletAddress={window.solana} />}
           </div>
-        {walletAddress && <CandyMachine walletAddress={window.solana} />}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
