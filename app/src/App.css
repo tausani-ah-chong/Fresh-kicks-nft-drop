@@ -1,16 +1,26 @@
-.App {
-  text-align: center;
-}
-
 .container {
   justify-content: center;
   align-content: center;
 }
 
+.navigation {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: black;
+  font-size: 32px;
+  font-weight: bolder;
+}
+
 .header-container {
   display: flex;
   flex-direction: row;
-  padding: 100px;
+  padding: 0 100px;
 }
 
 .gif {
@@ -29,7 +39,14 @@
 
 .header {
   font-size: 72px;
-  font-weight: bold;
+  font-weight: bolder;
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(right, #FF5677, #b45be1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 4s ease infinite;
 }
 
 .cta-button {
@@ -56,6 +73,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 50px;
 }
 
 .twitter-logo {
