@@ -13,18 +13,18 @@ const NavigationBar: FunctionComponent = () => {
       <p className='logo'>{`😈 ${WEBSITE_NAME}`}</p>
       <Stack direction="row" spacing={1}>
         <a href={INSTAGRAM_LINK}>
-          <Avatar sx={{ bgcolor: '#191919', height: 32, width: 32 }} >
-            <InstagramIcon fontSize="small" />
+          <Avatar sx={{ bgcolor: 'white', height: 32, width: 32 }} >
+            <InstagramIcon fontSize="small" htmlColor='#191919' />
           </Avatar>
         </a>
         <a href={YOUTUBE_LINK}>
-          <Avatar sx={{ bgcolor: '#191919', height: 32, width: 32 }} >
-            <YouTubeIcon fontSize="small" />
+          <Avatar sx={{ bgcolor: 'white', height: 32, width: 32 }} >
+            <YouTubeIcon fontSize="small" htmlColor='#191919' />
           </Avatar>
         </a>
         <a href={INSTAGRAM_LINK}>
-          <Avatar sx={{ bgcolor: '#191919', height: 32, width: 32 }} >
-            <TwitterIcon fontSize="small" />
+          <Avatar sx={{ bgcolor: 'white', height: 32, width: 32 }} >
+            <TwitterIcon fontSize="small" htmlColor='#191919' />
           </Avatar>
         </a>
       </Stack>
