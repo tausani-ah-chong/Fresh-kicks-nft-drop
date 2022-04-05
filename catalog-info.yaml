@@ -5,6 +5,6 @@ metadata:
   annotations:
     github.com/project-slug: tausani-ah-chong/Fresh-kicks-nft-drop
 spec:
-  type: other
-  lifecycle: unknown
+  type: website
+  lifecycle: development
   owner: acceleration
