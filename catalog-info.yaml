@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Fresh-kicks-nft-drop
+  annotations:
+    github.com/project-slug: tausani-ah-chong/Fresh-kicks-nft-drop
+spec:
+  type: other
+  lifecycle: unknown
+  owner: acceleration
